@@ -13,5 +13,10 @@ const migratePolicy = process.env.NODE_ENV === 'production' ? 'alter' : 'drop';
 module.exports.models = {
 
   migrate: migratePolicy,
+  attributes: {
+    createdAt: { type: 'number', autoCreatedAt: true, },
+    updatedAt: { type: 'number', autoUpdatedAt: true, },
+    id: { type: 'number', autoIncrement: true},
+  }
 
 };
