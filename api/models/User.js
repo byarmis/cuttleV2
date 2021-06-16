@@ -36,7 +36,7 @@ module.exports = {
   	},
     frozenId: {
       type: 'integer',
-      defaultsTo: null
+      defaultsTo: 0,
     },
   }
 };

@@ -16,13 +16,11 @@ module.exports = {
   	status: {
   		type: 'boolean',
   		defaultsTo: true,
-  		required: true,
   	},
 
     players: {
       collection: 'user',
       via: 'game',
-      defaultsTo: [],
     },
 
     p0Ready: {
@@ -96,11 +94,11 @@ module.exports = {
     },
 
     log: {
-      type: "array",
+      type: 'ref',
       defaultsTo: []
     },
     chat: {
-      type: "array",
+      type: 'ref',
       defaultsTo: []
     },
   }
