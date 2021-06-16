@@ -87,12 +87,14 @@ module.exports = {
 			req.session.game = game.id;
 			req.session.pNum = user.pNum;
 			Game.subscribe(req, game.id);
-			Game.watch(req);
-
-			Game.publishUpdate(game.id,
-			{
-				change: 'reLogin',
-				game: game,
+			sails.sockets.join(req, 'GameList');
+			
+			Game.publish(game.id, {
+				change: 'updated',
+				data: {
+					change: 'reLogin',
+					game,
+				},
 			});
 			
 			return res.ok();
