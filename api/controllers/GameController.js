@@ -12,7 +12,6 @@ var Promise = require('bluebird');
 var gameAPI = sails.hooks['customgamehook'];
 var userAPI = sails.hooks['customuserhook'];
 
-
 module.exports = {
 	///////////////////////////////////
 	// Outside of Game Actions       //
