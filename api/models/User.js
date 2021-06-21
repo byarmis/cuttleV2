@@ -17,9 +17,15 @@ module.exports = {
   	},
   	game: {
   		model: 'game',
-  	},
+	  },
+	/**
+	 * Index of this user within a Game's players collection
+	 * @value null iff not in game
+	 * @value 0 or 1 if player 0 or player 1, respectively
+	 */
     pNum: {
-        type: 'number'
+		type: 'ref',
+		defaultsTo: null,
     },
     hand: {
     	collection: 'card',
@@ -32,10 +38,14 @@ module.exports = {
   	runes: {
   		collection: 'card',
   		via: 'runes',
-  	},
+	  },
+	/**
+	 * Id of a card in player's hand that cannot be played this turn
+	 * @value null iff no card is frozen
+	 */
     frozenId: {
-      type: 'number',
-      defaultsTo: 0,
+      type: 'ref',
+      defaultsTo: null,
 	},
 	rank: {
 		type: 'number',
