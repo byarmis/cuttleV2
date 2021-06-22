@@ -79,7 +79,7 @@ module.exports = {
 					if (error) {
 						err = error;
 					} else {
-						err = new Error("Cannot find game: " + options.gameId);
+						err = {message: "Cannot find game: " + options.gameId};
 					}
 					return reject(err);
 				} else {
@@ -124,10 +124,10 @@ module.exports = {
 									var p1 = userService.findUser({userId: game.players[1].id});
 									return Promise.all([Promise.resolve(game), p0, p1]);
 								} else {
-									return Promise.reject(new Error("Can't populate game without two players")); 
+									return Promise.reject({message: "Can't populate game without two players"}); 
 								} 
 							} else {
-								return Promise.reject (new Error("Can't populate game, because it does not have players collection")); 
+								return Promise.reject({message: "Can't populate game, because it does not have players collection"}); 
 							}
 						})
 						// then find points
@@ -162,13 +162,13 @@ module.exports = {
 							return reject(err);
 						});
 					} else {
-						reject(new Error("Invalid gameId: Not a number"));
+						reject({message: "Invalid gameId: Not a number"});
 					}
 				} else {
-					return reject(new Error("Cannot populate Game without GameId (options had no gameId)"));
+					return reject({message: "Cannot populate Game without GameId (options had no gameId)"});
 				}
 			} else {
-				return reject(new Error("Cannot populate Game without gameId"));
+				return reject({message: "Cannot populate Game without gameId"});
 			}
 		});
 	}, //End populateGame()
