@@ -104,6 +104,8 @@ module.exports = {
 							.set({
 								status: false
 							});
+							// For respond() handler
+							game.status = false;
 						sails.sockets.blast("gameFull", {id: game.id});
 					}
 				} else {
