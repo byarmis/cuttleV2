@@ -326,7 +326,7 @@ module.exports = {
 	/////////////////////
 
 	draw: function (req, res) {
-		var pGame = gameService.findGame({gameId: req.session.game})
+		const pGame = gameService.findGame({gameId: req.session.game})
 		.then(function checkTurn (game) {
 			if (req.session.pNum === game.turn % 2) {
 				if (game.topCard) {
@@ -339,7 +339,7 @@ module.exports = {
 			}
 		});
 
-		var pUser = userService.findUser({userId: req.session.usr})
+		const pUser = userService.findUser({userId: req.session.usr})
 		.then(function handLimit (user) {
 			if (user.hand.length < 8) {
 				return Promise.resolve(user);
